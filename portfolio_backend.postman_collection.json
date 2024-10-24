@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "997140b0-ab7f-4480-b23b-776cf753e057",
+		"name": "portfolio_backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38290098"
+	},
+	"item": [
+		{
+			"name": "hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hello?placeholder=whatever",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hello"
+					],
+					"query": [
+						{
+							"key": "placeholder",
+							"value": "whatever"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_project_types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_project_types?whatever=whatever",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_project_types"
+					],
+					"query": [
+						{
+							"key": "whatever",
+							"value": "whatever"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_projects_for_type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_projects_for_type?type=TestClass",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_projects_for_type"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "TestClass"
+						},
+						{
+							"key": "type",
+							"value": "Programming",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_project_info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_project_info?path=TestClass/TestProject",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_project_info"
+					],
+					"query": [
+						{
+							"key": "path",
+							"value": "TestClass/TestProject"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_project_description",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_project_description?path=TestClass/TestProject",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_project_description"
+					],
+					"query": [
+						{
+							"key": "path",
+							"value": "TestClass/TestProject"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_project_pics_names",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_project_pics_names?path=TestClass/TestProject",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_project_pics_names"
+					],
+					"query": [
+						{
+							"key": "path",
+							"value": "TestClass/TestProject"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_project_picture",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_project_picture?path=TestClass/TestProject&filename=thumbnail.jpg",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_project_picture"
+					],
+					"query": [
+						{
+							"key": "path",
+							"value": "TestClass/TestProject"
+						},
+						{
+							"key": "filename",
+							"value": "thumbnail.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_projects_custom",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_projects_custom?types=TestClass&start_index=0&end_index=1&sort_type=newest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_projects_custom"
+					],
+					"query": [
+						{
+							"key": "types",
+							"value": "TestClass"
+						},
+						{
+							"key": "start_index",
+							"value": "0"
+						},
+						{
+							"key": "end_index",
+							"value": "1"
+						},
+						{
+							"key": "sort_type",
+							"value": "newest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_max_index_for_custom",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_max_index_for_custom?types=TestClass",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_max_index_for_custom"
+					],
+					"query": [
+						{
+							"key": "types",
+							"value": "TestClass"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

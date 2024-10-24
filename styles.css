@@ -1,0 +1,255 @@
+@charset "UTF-8";
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "SF-Pro-Display";
+  src: url("fonts/SF-Mono-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "SF-Pro-Display", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #050505;
+}
+body H1 {
+  color: #e0e0e0;
+}
+body p {
+  color: #e0e0e0;
+}
+body h {
+  color: #e0e0e0;
+}
+
+.landing-page {
+  height: 100vh;
+}
+
+.top_info_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  z-index: 20;
+}
+.top_info_header .top_info_header_left {
+  border: 1px solid #333;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.top_info_header div {
+  padding: 0px 0px;
+}
+.top_info_header p {
+  font-size: 0.8rem;
+}
+.top_info_header a {
+  font-size: 0.8rem;
+  color: #ecb063;
+  text-decoration: none;
+}
+.top_info_header .top_info_header_second {
+  z-index: 30;
+}
+.top_info_header .navigation {
+  list-style: none;
+}
+.top_info_header .navigation a {
+  text-decoration: none;
+  color: #ecb063;
+}
+.top_info_header .navigation a:hover {
+  color: #ccc;
+}
+.top_info_header .top_info_header_third {
+  opacity: 1;
+  visibility: visible;
+  max-width: 100%;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, width 0.5s ease-in-out;
+}
+@media (max-width: 800px) {
+  .top_info_header .top_info_header_third {
+    opacity: 0;
+    visibility: hidden;
+    max-width: 0;
+    pointer-events: none;
+  }
+}
+.top_info_header .top_info_header_right {
+  z-index: 30;
+}
+
+/*
+nav ul {
+  list-style-type: none; // Remove default list styling
+  padding: 0;
+  margin: 0;
+  display: flex; // Make the list items horizontal
+  justify-content: center; // Center the list items horizontally
+}
+
+nav li {
+  margin: 0 10px; // Add some space between the buttons
+}
+
+nav a {
+  text-decoration: none; // Remove underline from links
+  color: #e0e0e0; // Set the text color
+  padding: 10px 20px; // Add padding to the links
+  background-color: #333; // Set background color
+  border: 1px solid #444; // Add border
+  transition: background-color 0.3s, color 0.3s; /* Add transition for hover effect
+
+  &:hover {
+    background-color: #050505; // Change background color on hover
+    color: #fff; // Change text color on hover
+  }
+} */
+header {
+  background-color: #050505;
+  padding: 20px;
+  text-align: center;
+}
+
+.special-header {
+  height: 100vh;
+  margin-left: -200px;
+  margin-right: -200px;
+  margin-bottom: 100px;
+  margin-top: -150px;
+  background-color: #050505;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#filters {
+  padding: 20px;
+  background-color: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#filters #project-types {
+  margin-right: 20px;
+}
+#filters #project-types input[type=checkbox] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #050505;
+  border: 1px solid #444;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+#filters #project-types input[type=checkbox]:checked {
+  background-color: #444;
+  border-color: #fff;
+}
+#filters #project-types input[type=checkbox]:checked::after {
+  content: "✕"; /* 2716 also works */
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+}
+#filters #project-types label {
+  color: #e0e0e0;
+  margin-right: 20px;
+  cursor: pointer;
+  align-items: center;
+}
+#filters button {
+  z-index: 20;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  transition: background-color 0.3s, color 0.3s;
+}
+#filters button:hover {
+  background-color: #050505;
+  color: #fff;
+}
+
+#projects-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  background-color: #050505;
+}
+#projects-grid .project {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: center;
+  background-color: #050505;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#projects-grid .project:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+#projects-grid .project img {
+  max-width: 100%;
+  height: auto;
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px;
+}
+#projects-grid .project h3 {
+  color: #e0e0e0;
+}
+#projects-grid .project p {
+  color: #b0b0b0;
+}
+
+@media (min-width: 600px) {
+  #projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  #projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  #projects-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+/*
+@media (min-width: 100px) {
+  #projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 700px) {
+  #projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1210px) {
+  #projects-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  #projects-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+*/
+
+/*# sourceMappingURL=styles.css.map */
