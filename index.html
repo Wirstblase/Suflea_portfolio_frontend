@@ -2,9 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-$END$
+
+<div class="landing-page">
+
+<header class="top_info_header">
+  <div class="top_info_header_left">
+    <p>Marius</p>
+    <p>Suflea</p>
+    <!--<p>by <a href="https://instagram.com/mariussuflea" target="_blank">Marius Suflea</a></p>-->
+  </div>
+  <div class="top_info_header_second">
+    <p>Available for freelance work / hire</p>
+    <!-- add an email link -->
+    <p><a href="mailto: hello@mariussuflea.com">hello@mariussuflea.com</a></p>
+  </div>
+  <div class="top_info_header_third">
+    <p>Currently located in</p>
+    <p>Timisoara, Romania</p>
+  </div>
+  <div class="top_info_header_right">
+    <nav>
+      <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="#filters">Projects</a></li>
+        <li><a href="#">Services</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!--<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>-->
+
+<header id="special-header" class="special-header">
+
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.32/build/spline-viewer.js"></script>
+  <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/wd8cPwlJ3VcpkuWb/scene.splinecode"></spline-viewer>
+
+  <!-- broken <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.33/build/spline-viewer.js"></script>
+  <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/Wwdbve7UDAuZoVlz/scene.splinecode"></spline-viewer>
+  -->
+</header>
+
+<!--
+<header>
+
+  <h1>Welcome to my portfolio</h1>
+  <p>I make things</p>
+
+  <p>You have landed on my website</p>
+  <p>If you're here to see my projects</p>
+
+  <p>You can browse them below</p>
+
+</header>
+-->
+
+<!--
+<header>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.32/build/spline-viewer.js"></script>
+  <spline-viewer url="https://prod.spline.design/lOWHhP8Lt4E4OKSz/scene.splinecode"></spline-viewer>
+</header>
+-->
+
+<!--
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.32/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/5ZcrTrsUhIRPkzUO/scene.splinecode"></spline-viewer>
+-->
+
+</div> <!-- end of landing-page -->
+
+<!-- <div> <p> Scroll down to see the projects </p> </div>  This shows at the bottom of the landing page ! deprecated -->
+
+<section id="filters">
+  <div id="project-types"></div>
+  <button id="sort-button">Sort: Newest</button>
+</section>
+<section id="projects-grid"></section>
+<script src="index.js"></script>
+
+<header>
+<h> This website was built in an afternoon · I am not a <font color="#ff7f50">web</font> developer · hehe </h>
+</header>
+
 </body>
 </html>
