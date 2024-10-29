@@ -43,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .map(checkbox => checkbox.value)
             .join(',');
 
+        if (!selectedTypes) {
+            projectsGrid.innerHTML = '<div class="no-projects-message"><p>Currently, there are no projects to show</p></div>';
+            return;
+        }
+
         console.log(`Selected Types: ${selectedTypes}`);
         console.log(`Sort Type: ${sortType}`);
 

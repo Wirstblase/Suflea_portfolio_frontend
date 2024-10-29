@@ -246,6 +246,19 @@ header {
   padding: 20px;
   background-color: $bg-color-primary;
 
+  .no-projects-message{
+    //display: flex;
+    //flex-grow: 1;
+    //justify-content: center;
+    //align-items: center;
+    //height: 100%;
+    //padding-right: 10%;
+    margin-left: -2%; //really bad workaround to center this, but it works
+    width: 100vw;
+    text-align: center;
+    //color: #e0e0e0;
+  }
+
   .project {
     border: 1px solid #333;
     padding: 10px;

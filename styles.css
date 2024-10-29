@@ -188,6 +188,11 @@ header {
   padding: 20px;
   background-color: #050505;
 }
+#projects-grid .no-projects-message {
+  margin-left: -2%;
+  width: 100vw;
+  text-align: center;
+}
 #projects-grid .project {
   border: 1px solid #333;
   padding: 10px;
