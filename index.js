@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const urlstring= "https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
+    const urlstring = 'http://127.0.0.1:5000' //"https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
 
     const scrollPosition = window.location.hash.substring(1);
     if (scrollPosition) {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let sortType = 'newest';
 
     // Fetch project types
-    fetch(`${urlstring}/get_project_types`)
+    fetch(`${urlstring}/get_project_types?whatever=whatever`)
         .then(response => response.json())
         .then(types => {
             types.forEach(type => {
@@ -39,14 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch and display projects
     const fetchAndDisplayProjects = () => {
+
         const selectedTypes = Array.from(document.querySelectorAll('input[name="project-type"]:checked'))
             .map(checkbox => checkbox.value)
             .join(',');
 
         if (!selectedTypes) {
-            projectsGrid.innerHTML = '<div class="no-projects-message"><p>Currently, there are no projects to show</p></div>';
+            projectsGrid.innerHTML = '<div class="no-projects-message"><p>Currently, there are no projects available to show</p></div>';
+            //projectsGrid.style.gridTemplateColumns = '1fr';
             return;
         }
+
+        //projectsGrid.style.gridTemplateColumns = 'unset';
 
         console.log(`Selected Types: ${selectedTypes}`);
         console.log(`Sort Type: ${sortType}`);
@@ -70,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
+                    //const htmlstring = '<div class="no-projects-message"><p>There seems to be an error: '+response.statusText+' '+response.status+'</p></div>';
+                    //projectsGrid.innerHTML = htmlstring;
                 }
                 return response.json();
             })
@@ -94,7 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     projectType.textContent = `Type: ${type}`;
 
                     const projectDate = document.createElement('p');
-                    projectDate.textContent = `Year: ${date.split('.').pop()}`;
+                    //projectDate.textContent = `Year: ${date.split('.').pop()}`;
+                    //format the date as: August 2021
+                    const dateArray = date.split('.');
+                    const month = dateArray[1];
+                    const year = dateArray[2];
+                    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                    projectDate.textContent = `${monthNames[parseInt(month) - 1]} ${year}`;
 
                     projectElement.appendChild(img);
                     projectElement.appendChild(projectTitle);

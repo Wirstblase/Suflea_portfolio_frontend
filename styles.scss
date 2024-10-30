@@ -255,6 +255,7 @@ header {
     //padding-right: 10%;
     margin-left: -2%; //really bad workaround to center this, but it works
     width: 100vw;
+    //width: 100%;
     text-align: center;
     //color: #e0e0e0;
   }
@@ -287,6 +288,7 @@ header {
     }
   }
 }
+
 
 @media (min-width: 100px) {
   #projects-grid {
@@ -332,3 +334,112 @@ header {
   }
 }
 */
+
+//project.js
+
+.project-details{
+  margin: 0 10px; /* Default margin for small screens */
+
+  @media (min-width: 0px) {
+
+    .description-container{
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    .gallery-image {
+      max-width: 90%;
+      height: auto;
+    }
+  }
+
+  @media (min-width: 600px) {
+
+    //margin: 0 20px; /* Increase margin for medium screens */
+
+  }
+
+  @media (min-width: 900px) {
+    margin: 0 5vw; /* Further increase margin for larger screens */
+
+    .embedded-image{
+
+      max-width: 400px;
+
+    }
+
+    .description-container{
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .gallery-image {
+
+      max-width: 512px;
+
+    }
+
+  }
+
+  @media (min-width: 1200px) {
+    margin: 0 10vw; /* Maximum margin for very large screens */
+
+
+
+  }
+}
+
+
+.description-container {
+  text-align: justify;
+  color: $font-color-1;
+  a{
+    color: $font-color-link;
+  }
+}
+
+.embedded-image {
+  float: right;
+  margin: 10px;
+  //max-width: 50%;
+  max-height: 512px;
+  max-width: 50vw;
+  width: auto;
+  height: auto;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  flex: 1 1 calc(33.333% - 10px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.gallery-image {
+  //max-width: 100%;
+  height: auto;
+  //max-width: 512px;
+  min-width: 400px;
+  //width: 400px;
+  //min-width;
+
+}
+
+.cool-back-button {
+    background-color: #333;
+    color: #e0e0e0;
+    padding: 10px 20px;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+        background-color: #050505;
+        color: #fff;
+    }
+}
