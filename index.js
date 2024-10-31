@@ -14,12 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let sortType = 'newest';
 
     //better workaround to hide the spline logo
-    document.documentElement.style.overflowX = "hidden";
+
+    //document.documentElement.style.overflowX = "hidden";
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
 
     const splineViewer = document.querySelector('spline-viewer');
 
     //workaround to hide the spline logo lol
-    var shouldHideLogo = true;
+    var shouldHideLogo = false;
     if (splineViewer && shouldHideLogo) {
         console.log("spline viewer found")
 
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 logo.style.width = '0';
                 logo.style.height = '0';
 
-                document.documentElement.style.overflowX = "hidden";
+                //document.documentElement.style.overflowX = "hidden";
 
                 //splineViewer.style.width = '100vw';
                 //splineViewer.style.justifyContent = 'center';
@@ -222,4 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }*/
         fetchAndDisplayProjects();
     });
+});
+
+window.addEventListener('resize', () => {
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
 });

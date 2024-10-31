@@ -1,4 +1,8 @@
 @charset "UTF-8";
+html, body {
+  overflow-x: hidden !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -120,11 +124,15 @@ header {
   height: 100vh;
   margin-left: -200px;
   margin-right: -200px;
-  margin-bottom: 100px;
-  margin-top: -150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
+  padding-bottom: 100px;
+  margin-top: -120px;
   background-color: #050505;
   text-align: center;
-  overflow: hidden;
+  overflow: clip;
   z-index: 1;
 }
 
