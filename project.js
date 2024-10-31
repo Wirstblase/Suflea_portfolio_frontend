@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //todo: add better text-image embedding, randomize float direction
 
-    const urlstring = "https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
+    const urlstring = 'http://127.0.0.1:5000' //"https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
 
     const urlParams = new URLSearchParams(window.location.search);
     const projectType = urlParams.get('type');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const fetchCaption = async (pic) => {
-        const response = await fetch(`${urlstring}/get_project_picture?path=${projectType}/${projectTitle}&filename=${pic}.txt`);
+        const response = await fetch(`${urlstring}/get_project_picture?path=${projectType}/${projectTitle}&filename=${pic.replace('low-res_','')}.txt`);
         if (response.ok) {
             return await response.text();
         }
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //NEEDS WORK
         const textLength = descriptionText.length;
-        const numImagesToEmbed = Math.min(Math.floor(textLength / 1000), pics.length); // Embed 1 image per 1000 characters of text
+        const numImagesToEmbed = Math.min(Math.floor(textLength / 5000), pics.length); // Embed 1 image per 1000 characters of text
 
         //NEEDS WORK
         for (let i = 0; i < numImagesToEmbed; i++) {
@@ -126,8 +126,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 imgElement.addEventListener('click', () => openModal(pics[i]));
 
                 const caption = await fetchCaption(pics[i]);
+
+
                 const captionElement = document.createElement('p');
                 captionElement.textContent = caption;
+
+                if(caption === 'no caption'){
+                    //captionElement.style.display = 'none';
+                    captionElement.textContent = ' ';
+                }
 
                 const container = document.createElement('div');
                 container.className = 'gallery-item';
