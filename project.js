@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
         //keep only the pics that start with low-res_
         filteredPics = filteredPics.filter(pic => pic.startsWith('low-res_'));
 
+        //sort pics alphabetically
+        filteredPics.sort();
+
         console.log('all files:', pics);
         console.log('Filtered Pics:', filteredPics);
 
@@ -74,12 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const displayProjectDetails = async () => {
-        const pics = (await fetchProjectPics()).reverse();
+        const pics = (await fetchProjectPics()) //.reverse();
 
         const descriptionData = await fetchProjectDescription();
         const descriptionText = JSON.parse(descriptionData)['description_body'];
 
         const projectDetails = document.getElementById('project-details');
+
+        //console.log('Pics:', pics);
 
         //console.log('Description:', descriptionText);
 
@@ -98,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imgElement.src = `${urlstring}/get_project_picture?path=${projectType}/${projectTitle}&filename=${pics[i]}`;
             imgElement.alt = pics[i];
             imgElement.className = 'embedded-image';
+            imgElement.addEventListener('click', () => openModal(pics[i]));
 
             //todo: make it so that the images are embedded in random places in the text, not only on the right side, and determine some amount of text to be left inbetween the embeds and after the last image
             const textNode = descriptionContainer.childNodes[Math.floor((i + 1) * descriptionContainer.childNodes.length / (numImagesToEmbed + 1))];
@@ -116,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 imgElement.src = `${urlstring}/get_project_picture?path=${projectType}/${projectTitle}&filename=${pics[i]}`;
                 imgElement.alt = pics[i];
                 imgElement.className = 'gallery-image';
+                imgElement.addEventListener('click', () => openModal(pics[i]));
 
                 const caption = await fetchCaption(pics[i]);
                 const captionElement = document.createElement('p');
@@ -136,6 +143,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     };
+
+    const openModal = (pic) => {
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('full-res-image');
+        modal.style.display = 'flex';
+        const fullResPic = pic.replace('low-res_', '');
+        modalImg.src = `${urlstring}/get_project_picture?path=${projectType}/${projectTitle}&filename=${fullResPic}`;
+    };
+
+    const closeModal = () => {
+        const modal = document.getElementById('image-modal');
+        modal.style.display = 'none';
+    };
+
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    document.getElementById('image-modal').addEventListener('click', (event) => {
+        if (event.target === event.currentTarget) {
+            closeModal();
+        }
+    });
 
     displayProjectDetails();
 

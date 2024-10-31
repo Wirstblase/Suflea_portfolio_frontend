@@ -268,6 +268,7 @@ header {
   .project-details .gallery-image {
     max-width: 90%;
     height: auto;
+    min-width: 80vw;
   }
 }
 @media (min-width: 900px) {
@@ -283,6 +284,7 @@ header {
   }
   .project-details .gallery-image {
     max-width: 512px;
+    min-width: 400px;
   }
 }
 @media (min-width: 1200px) {
@@ -337,6 +339,37 @@ header {
 .cool-back-button:hover {
   background-color: #050505;
   color: #fff;
+}
+
+.image-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.9); /* Black with opacity */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */

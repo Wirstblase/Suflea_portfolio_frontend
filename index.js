@@ -13,6 +13,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortButton = document.getElementById('sort-button');
     let sortType = 'newest';
 
+    //better workaround to hide the spline logo
+    document.documentElement.style.overflowX = "hidden";
+
+    const splineViewer = document.querySelector('spline-viewer');
+
+    //workaround to hide the spline logo lol
+    var shouldHideLogo = true;
+    if (splineViewer && shouldHideLogo) {
+        console.log("spline viewer found")
+
+        const checkLogo = () => {
+            const logo = splineViewer.shadowRoot.querySelector('#logo');
+            console.log("checking for logo");
+            if (logo) {
+                console.log("found logo");
+                shouldHideLogo = false;
+                logo.style.position = 'relative';
+                logo.style.width = '0';
+                logo.style.height = '0';
+
+                document.documentElement.style.overflowX = "hidden";
+
+                //splineViewer.style.width = '100vw';
+                //splineViewer.style.justifyContent = 'center';
+                //specialHeader.style.width = '100vw';
+                //specialHeader.style.marginLeft = 0;
+                //specialHeader.style.marginRight = 0;
+                //specialHeader.style.overflow = 'clip';
+            } else {
+                setTimeout(checkLogo, 100); // Check again after 100ms
+            }
+        };
+
+        checkLogo();
+
+    }
+
+
+
+
     // Fetch project types
     fetch(`${urlstring}/get_project_types?whatever=whatever`)
         .then(response => response.json())
