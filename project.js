@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    //todo: add low res / high res images
-    //todo: add image detail view where it loads the high res version
     //todo: add better text-image embedding, randomize float direction
 
-    const urlstring = 'http://127.0.0.1:5000' //"https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
+    const urlstring = "https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
 
     const urlParams = new URLSearchParams(window.location.search);
     const projectType = urlParams.get('type');
@@ -93,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         descriptionContainer.className = 'description-container';
         descriptionContainer.innerHTML = descriptionText;
 
+
         //NEEDS WORK
         const textLength = descriptionText.length;
         const numImagesToEmbed = Math.min(Math.floor(textLength / 1000), pics.length); // Embed 1 image per 1000 characters of text
@@ -114,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Display remaining images in a gallery view
         if (numImagesToEmbed < pics.length) {
+
+
             const galleryContainer = document.createElement('div');
             galleryContainer.className = 'gallery-container';
 
