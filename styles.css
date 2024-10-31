@@ -145,6 +145,8 @@ header {
   flex-wrap: wrap;
 }
 #filters #project-types {
+  display: flex;
+  align-items: center;
   margin-right: 20px;
 }
 #filters #project-types input[type=checkbox] {

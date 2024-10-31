@@ -199,6 +199,8 @@ header {
   //border-top: 1px solid $border-color-1;
 
   #project-types {
+    display: flex;
+    align-items: center;
     margin-right: 20px;
 
     input[type="checkbox"] {
@@ -232,9 +234,11 @@ header {
     label {
       color: #e0e0e0;
       margin-right: 20px;
+
       cursor: pointer;
       //display: flex;
       align-items: center;
+      //justify-content: center;
     }
   }
 
