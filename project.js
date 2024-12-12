@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //todo: add better text-image embedding, randomize float direction
 
-    const urlstring = 'http://127.0.0.1:5000' //"https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
+    const urlstring = "https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
 
     const urlParams = new URLSearchParams(window.location.search);
     const projectType = urlParams.get('type');
