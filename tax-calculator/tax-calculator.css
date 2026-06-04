@@ -157,7 +157,7 @@ body {
   -moz-appearance: textfield;
 }
 .tc-input-group input[type=number]::placeholder {
-  color: #555;
+  color: #ecb063;
 }
 .tc-input-group input[type=number].tc-input--muted {
   color: #555;
@@ -179,6 +179,13 @@ body {
   flex-direction: column;
   gap: 4px;
 }
+.tc-result-card.tc-highlight {
+  border-color: #333;
+}
+.tc-result-card.tc-highlight .tc-value {
+  color: #e0e0e0;
+  font-size: 1.15rem;
+}
 .tc-result-card .tc-label {
   font-size: 0.72rem;
   color: #777;
@@ -188,13 +195,6 @@ body {
 .tc-result-card .tc-value {
   font-size: 1.05rem;
   color: #e0e0e0;
-}
-.tc-result-card.tc-highlight {
-  border-color: #ecb063;
-}
-.tc-result-card.tc-highlight .tc-value {
-  color: #ecb063;
-  font-size: 1.15rem;
 }
 
 .tc-sweet-spot {

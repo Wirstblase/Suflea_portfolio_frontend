@@ -184,7 +184,7 @@ body {
     -moz-appearance: textfield;
 
     &::placeholder {
-      color: #555;
+      color: #ecb063;
     }
 
     &.tc-input--muted {
@@ -227,10 +227,8 @@ body {
   }
 
   &.tc-highlight {
-    border-color: $font-color-link;
-
     .tc-value {
-      color: $font-color-link;
+      color: $font-color-1;
       font-size: 1.15rem;
     }
   }
