@@ -11,7 +11,7 @@ $border-color-1: #3e3e3e;
 
 @font-face {
   font-family: "SF-Pro-Display";
-  src: url("fonts/SF-Mono-Regular.otf") format("opentype");
+  src: url("../fonts/SF-Mono-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
@@ -119,18 +119,20 @@ body {
   }
 
   &.tc-results-group--arrow {
-    position: relative;
+    gap: 20px;
+    .tc-result-card:first-child {
+      position: relative;
 
-    .tc-result-card:first-child::after {
-      content: '\2192';
-      position: absolute;
-      right: -14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #555;
-      font-size: 1.1rem;
-      pointer-events: none;
-      z-index: 1;
+      &::after {
+        content: '\2192';
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        transform: translate(50%, -50%);
+        color: #555;
+        font-size: 1.1rem;
+        pointer-events: none;
+      }
     }
   }
 }
