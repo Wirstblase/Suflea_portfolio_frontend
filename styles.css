@@ -28,6 +28,10 @@ body p {
 body h {
   color: #e0e0e0;
 }
+body a {
+  color: #ecb063;
+  text-decoration: none;
+}
 
 .landing-page {
   height: 100vh;

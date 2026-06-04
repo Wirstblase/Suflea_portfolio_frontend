@@ -36,6 +36,10 @@ body {
   h{
     color: $font-color-1;
   }
+  a{
+    color: $font-color-link;
+    text-decoration: none;
+  }
 }
 
 .landing-page{

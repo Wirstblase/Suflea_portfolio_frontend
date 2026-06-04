@@ -60,11 +60,17 @@ body {
 }
 
 // ── Overview chart ───────────────────
+.tc-chart-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .tc-chart-container {
   background: $bg-color-2;
   border: 1px solid #333;
   padding: 20px;
   height: 420px;
+  min-width: 700px;
   position: relative;
 }
 
@@ -74,6 +80,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   align-items: start;
+  min-width: 0;
 }
 
 // ── Panel headings ───────────────────
@@ -110,6 +117,26 @@ body {
   &.tc-results-group--inline {
     grid-template-columns: 1fr 1fr;
   }
+
+  &.tc-results-group--arrow {
+    position: relative;
+
+    .tc-result-card:first-child::after {
+      content: '\2192';
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 1.1rem;
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+}
+
+.tc-arrow {
+  display: none;
 }
 
 .tc-divider {
@@ -139,6 +166,8 @@ body {
     font-size: 1rem;
     outline: none;
     transition: border-color 0.2s;
+    width: 100%;
+    min-width: 0;
 
     &:focus {
       border-color: $font-color-link;
@@ -230,10 +259,12 @@ body {
   .tc-sweet-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 8px;
     padding: 8px 0;
     border-bottom: 1px solid #222;
     font-size: 0.85rem;
+    flex-wrap: wrap;
 
     &:last-child {
       border-bottom: none;
@@ -245,14 +276,34 @@ body {
   }
 }
 
-// ── Mini chart ───────────────────────
-.tc-mini-chart-container {
+// ── Doughnut chart ───────────────────
+.tc-doughnut-scroll {
   grid-column: 1 / -1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tc-mini-chart-container {
   background: $bg-color-2;
   border: 1px solid #333;
   padding: 20px;
   height: 320px;
+  min-width: 350px;
   position: relative;
+}
+
+// ── Footer ────────────────────────────
+.tc-footer {
+  background-color: $bg-color-primary;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #1a1a1a;
+
+  p {
+    color: #666;
+    font-size: 0.78rem;
+    margin: 0;
+  }
 }
 
 // ── Responsive ───────────────────────
@@ -261,12 +312,29 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .tc-results-panel {
+    border-left: none;
+    padding-left: 0;
+  }
+
   .tc-results-group {
     grid-template-columns: 1fr 1fr;
   }
 
   .tc-chart-container {
+    height: 320px;
+  }
+
+  .tc-sweet-spot {
+    padding: 14px 14px;
+  }
+
+  .tc-mini-chart-container {
     height: 280px;
+  }
+
+  .tc-wrapper {
+    padding: 24px 16px 60px;
   }
 
   .tc-section h2 {

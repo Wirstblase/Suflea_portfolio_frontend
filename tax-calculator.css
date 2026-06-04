@@ -43,11 +43,17 @@ body {
   margin: 0 0 28px;
 }
 
+.tc-chart-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .tc-chart-container {
   background: #0a0a0a;
   border: 1px solid #333;
   padding: 20px;
   height: 420px;
+  min-width: 700px;
   position: relative;
 }
 
@@ -56,6 +62,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   align-items: start;
+  min-width: 0;
 }
 
 .tc-panel-heading {
@@ -89,6 +96,24 @@ body {
 .tc-results-group.tc-results-group--inline {
   grid-template-columns: 1fr 1fr;
 }
+.tc-results-group.tc-results-group--arrow {
+  position: relative;
+}
+.tc-results-group.tc-results-group--arrow .tc-result-card:first-child::after {
+  content: '\2192';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 1.1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tc-arrow {
+  display: none;
+}
 
 .tc-divider {
   border: none;
@@ -116,15 +141,18 @@ body {
   font-size: 1rem;
   outline: none;
   transition: border-color 0.2s;
-  -moz-appearance: textfield;
+  width: 100%;
+  min-width: 0;
 }
 .tc-input-group input[type=number]:focus {
   border-color: #ecb063;
 }
-.tc-input-group input[type=number]::-webkit-inner-spin-button,
-.tc-input-group input[type=number]::-webkit-outer-spin-button {
+.tc-input-group input[type=number]::-webkit-inner-spin-button, .tc-input-group input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.tc-input-group input[type=number] {
+  -moz-appearance: textfield;
 }
 .tc-input-group input[type=number]::placeholder {
   color: #555;
@@ -189,10 +217,12 @@ body {
 .tc-sweet-spot .tc-sweet-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 8px;
   padding: 8px 0;
   border-bottom: 1px solid #222;
   font-size: 0.85rem;
+  flex-wrap: wrap;
 }
 .tc-sweet-spot .tc-sweet-item:last-child {
   border-bottom: none;
@@ -201,13 +231,31 @@ body {
   color: #ecb063;
 }
 
-.tc-mini-chart-container {
+.tc-doughnut-scroll {
   grid-column: 1/-1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tc-mini-chart-container {
   background: #0a0a0a;
   border: 1px solid #333;
   padding: 20px;
   height: 320px;
+  min-width: 350px;
   position: relative;
+}
+
+.tc-footer {
+  background-color: #050505;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #1a1a1a;
+}
+.tc-footer p {
+  color: #666;
+  font-size: 0.78rem;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -222,7 +270,16 @@ body {
     grid-template-columns: 1fr 1fr;
   }
   .tc-chart-container {
+    height: 320px;
+  }
+  .tc-sweet-spot {
+    padding: 14px 14px;
+  }
+  .tc-mini-chart-container {
     height: 280px;
+  }
+  .tc-wrapper {
+    padding: 24px 16px 60px;
   }
   .tc-section h2 {
     font-size: 1.3rem;

@@ -14,23 +14,25 @@
 
   <!-- ==================== SECTION 1: General Visualization ==================== -->
   <section id="tc-viz" class="tc-section">
-    <h2>How much should you earn?</h2>
-    <p class="tc-subtitle">If you're a Romanian PFA in 2026</p>
-    <div class="tc-chart-container">
-      <canvas id="tc-overview-chart"></canvas>
+    <h2>PFA TAX OPTIMIZER 9000</h2>
+    <p class="tc-subtitle">How much -should- you earn? (in 2026)</p>
+    <div class="tc-chart-scroll">
+      <div class="tc-chart-container">
+        <canvas id="tc-overview-chart"></canvas>
+      </div>
     </div>
   </section>
 
   <!-- ==================== SECTION 2: Interactive Calculator ==================== -->
   <section id="tc-calc" class="tc-section">
-    <h2>Interactive Calculator</h2>
-    <p class="tc-subtitle">Adjust the variables below to simulate your PFA tax obligations</p>
+    <h2>Calculator</h2>
+    <p></p>
 
     <div class="tc-calc-layout">
 
       <!-- Inputs panel -->
       <div class="tc-inputs-panel">
-        <h3 class="tc-panel-heading">User-input values</h3>
+        <h3 class="tc-panel-heading">Add your data here (it can be made-up, I don't care)</h3>
         <div class="tc-input-group">
           <label for="tc-gross-min-salary">Gross Minimum Salary (RON)</label>
           <input type="number" id="tc-gross-min-salary" value="4050" step="0.001" min="100" max="100000" maxlength="9" class="tc-input--muted">
@@ -53,13 +55,13 @@
       <div class="tc-results-panel">
         <h3 class="tc-panel-heading">Results</h3>
 
-        <div class="tc-results-group">
+        <div class="tc-results-group tc-results-group--arrow">
           <div class="tc-result-card tc-highlight">
             <span class="tc-label">Gross Income</span>
             <span id="tc-gross-income" class="tc-value">—</span>
           </div>
           <div class="tc-result-card tc-highlight">
-            <span class="tc-label">Total Take-Home</span>
+            <span class="tc-label">Total Profit</span>
             <span id="tc-take-home" class="tc-value">—</span>
           </div>
         </div>
@@ -100,7 +102,7 @@
             <span id="tc-monthly-gross" class="tc-value">—</span>
           </div>
           <div class="tc-result-card">
-            <span class="tc-label">Monthly Take-Home</span>
+            <span class="tc-label">Monthly Profit</span>
             <span id="tc-monthly-take-home" class="tc-value">—</span>
           </div>
           <div class="tc-result-card">
@@ -116,14 +118,20 @@
       </div>
 
       <!-- Doughnut chart -->
-      <div class="tc-mini-chart-container">
-        <canvas id="tc-breakdown-chart"></canvas>
+      <div class="tc-doughnut-scroll">
+        <div class="tc-mini-chart-container">
+          <canvas id="tc-breakdown-chart"></canvas>
+        </div>
       </div>
 
     </div>
   </section>
 
 </div>
+
+<footer class="tc-footer">
+  <p>no cookies here to accept either, we don't store anything. Your data is worthless to me :D</p>
+</footer>
 
 <script src="tax-calculator.js"></script>
 </body>
