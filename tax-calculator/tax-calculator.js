@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const setCard = (span, val, gray) => {
       span.textContent = val;
-      span.style.color = gray ? '#555' : '';
+      span.style.color = gray ? '#555' : '#e0e0e0';
       span.parentElement.style.borderColor = gray ? '#555' : '#333';
     };
     const isZero = totalIncome === 0;

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "SF-Pro-Display";
   src: url("../fonts/SF-Mono-Regular.otf") format("opentype");
@@ -103,7 +104,7 @@ body {
   position: relative;
 }
 .tc-results-group.tc-results-group--arrow .tc-result-card:first-child::after {
-  content: '\2192';
+  content: "→";
   position: absolute;
   right: -10px;
   top: 50%;
@@ -182,13 +183,6 @@ body {
   flex-direction: column;
   gap: 4px;
 }
-.tc-result-card.tc-highlight {
-  border-color: #333;
-}
-.tc-result-card.tc-highlight .tc-value {
-  color: #e0e0e0;
-  font-size: 1.15rem;
-}
 .tc-result-card .tc-label {
   font-size: 0.72rem;
   color: #777;
@@ -198,6 +192,10 @@ body {
 .tc-result-card .tc-value {
   font-size: 1.05rem;
   color: #e0e0e0;
+}
+.tc-result-card.tc-highlight .tc-value {
+  color: #e0e0e0;
+  font-size: 1.15rem;
 }
 
 .tc-sweet-spot {
