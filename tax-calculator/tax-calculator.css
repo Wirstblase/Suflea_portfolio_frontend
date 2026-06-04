@@ -159,6 +159,9 @@ body {
 .tc-input-group input[type=number]::placeholder {
   color: #ecb063;
 }
+.tc-input-group input[type=number].tc-input--muted-placeholder::placeholder {
+  color: #555;
+}
 .tc-input-group input[type=number].tc-input--muted {
   color: #555;
 }

@@ -187,6 +187,10 @@ body {
       color: #ecb063;
     }
 
+    &.tc-input--muted-placeholder::placeholder {
+      color: #555;
+    }
+
     &.tc-input--muted {
       color: #555;
     }

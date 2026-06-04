@@ -95,6 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Sweet spot analysis ────────────
   function computeSweetSpot(grossMinSalary, totalIncome, deductibleExpenses) {
+    // Check if already in a sweet spot — return immediately
+    for (const range of sweetSpotRanges) {
+      const start = xToIncome(range.xStart);
+      const end = xToIncome(range.xEnd);
+      if (totalIncome >= start && totalIncome <= end) {
+        return [{ direction: 'in', label: "You're in the sweet spot!", netEffect: '', extraAmount: 0 }];
+      }
+    }
+
     const currentNet = totalIncome - deductibleExpenses;
     const bracket12 = 12 * grossMinSalary;
     const bracket24 = 24 * grossMinSalary;
@@ -181,17 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Check if already in a sweet spot
-    if (candidates.length === 0) {
-      for (const range of sweetSpotRanges) {
-        const start = xToIncome(range.xStart);
-        const end = xToIncome(range.xEnd);
-        if (totalIncome >= start && totalIncome <= end) {
-          return [{ direction: 'in', label: "You're in the sweet spot!", netEffect: '', extraAmount: 0 }];
-        }
-      }
-    }
-
     // Return only the closest suggestion (smallest RON movement)
     candidates.sort((a, b) => a.extraAmount - b.extraAmount);
     return candidates.slice(0, 1);
@@ -242,39 +240,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const setHL = (span, val, gray) => {
       span.textContent = val;
       span.style.color = gray ? '#555' : '#ecb063';
-      if (span.parentElement.classList.contains('tc-highlight')) {
-        span.parentElement.style.borderColor = gray ? '#555' : '#ecb063';
-      }
+      span.parentElement.style.borderColor = gray ? '#555' : '#ecb063';
+    };
+    const setCard = (span, val, gray) => {
+      span.textContent = val;
+      span.style.color = gray ? '#555' : '';
+      span.parentElement.style.borderColor = gray ? '#555' : '#333';
     };
     const isZero = totalIncome === 0;
 
-    netIncomeSpan.textContent      = fmtRON(t.netIncome);
-    netIncomeSpan.style.color      = t.netIncome === 0 ? '#555' : '';
-    grossIncomeSpan.textContent     = fmtRON(totalIncome);
-    grossIncomeSpan.style.color     = isZero ? '#555' : '';
-    grossIncomeSpan.parentElement.style.borderColor = isZero ? '#555' : '';
-    healthcareSpan.textContent     = fmtRON(t.healthcareTax);
-    healthcareSpan.style.color     = t.healthcareTax === 0 ? '#555' : '';
-    pensionSpan.textContent        = fmtRON(t.pensionTax);
-    pensionSpan.style.color        = t.pensionTax === 0 ? '#555' : '';
-    incomeTaxSpan.textContent      = fmtRON(t.incomeTax);
-    incomeTaxSpan.style.color      = t.incomeTax === 0 ? '#555' : '';
+    setCard(netIncomeSpan, fmtRON(t.netIncome), t.netIncome === 0);
+    setCard(grossIncomeSpan, fmtRON(totalIncome), isZero);
+    setCard(healthcareSpan, fmtRON(t.healthcareTax), t.healthcareTax === 0);
+    setCard(pensionSpan, fmtRON(t.pensionTax), t.pensionTax === 0);
+    setCard(incomeTaxSpan, fmtRON(t.incomeTax), t.incomeTax === 0);
     setHL(totalTaxSpan, fmtRON(t.totalTax), t.totalTax === 0);
     setHL(effectiveRateSpan, fmtPct(t.effectiveRate), isZero);
-    takeHomeSpan.textContent       = (t.takeHome < 0 ? '−' : '') + fmtRON(Math.abs(t.takeHome));
+    takeHomeSpan.textContent = (t.takeHome < 0 ? '−' : '') + fmtRON(Math.abs(t.takeHome));
     if (t.takeHome < 0) {
       takeHomeSpan.style.color = '#d44';
       takeHomeSpan.parentElement.style.borderColor = '#d44';
     } else {
       setHL(takeHomeSpan, (t.takeHome < 0 ? '−' : '') + fmtRON(Math.abs(t.takeHome)), t.takeHome === 0);
     }
-    monthlyGrossSpan.textContent   = fmtRON(totalIncome / 12);
-    monthlyGrossSpan.style.color   = isZero ? '#555' : '';
+    setCard(monthlyGrossSpan, fmtRON(totalIncome / 12), isZero);
     monthlyTakeHomeSpan.textContent = (t.takeHome < 0 ? '−' : '') + fmtRON(Math.abs(t.takeHome / 12));
-    monthlyTakeHomeSpan.style.color = t.takeHome < 0 ? '#d44' : (t.takeHome === 0 ? '#555' : '');
-    monthlyTakeHomeSpan.parentElement.style.borderColor = t.takeHome < 0 ? '#d44' : (t.takeHome === 0 ? '#555' : '');
-    monthlyTaxSpan.textContent     = fmtRON(t.totalTax / 12);
-    monthlyTaxSpan.style.color     = t.totalTax === 0 ? '#555' : '';
+    if (t.takeHome < 0) {
+      monthlyTakeHomeSpan.style.color = '#d44';
+      monthlyTakeHomeSpan.parentElement.style.borderColor = '#d44';
+    } else {
+      setCard(monthlyTakeHomeSpan, (t.takeHome < 0 ? '−' : '') + fmtRON(Math.abs(t.takeHome / 12)), t.takeHome === 0);
+    }
+    setCard(monthlyTaxSpan, fmtRON(t.totalTax / 12), t.totalTax === 0);
 
     // ── Sweet spot ──
     const spots = computeSweetSpot(grossMinSalary, totalIncome, deductible);
