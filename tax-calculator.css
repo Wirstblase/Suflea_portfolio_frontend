@@ -1,0 +1,232 @@
+@font-face {
+  font-family: "SF-Pro-Display";
+  src: url("fonts/SF-Mono-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "SF-Pro-Display", monospace, sans-serif;
+  background-color: #050505;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+.tc-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.tc-section {
+  margin-bottom: 64px;
+}
+.tc-section h2 {
+  font-size: 1.6rem;
+  color: #ecb063;
+  margin: 0 0 4px;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+.tc-section .tc-subtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0 0 28px;
+}
+
+.tc-chart-container {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  padding: 20px;
+  height: 420px;
+  position: relative;
+}
+
+.tc-calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.tc-panel-heading {
+  font-size: 0.75rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 18px;
+  font-weight: normal;
+}
+
+.tc-inputs-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tc-results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 1px solid #222;
+  padding-left: 24px;
+}
+
+.tc-results-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.tc-results-group.tc-results-group--inline {
+  grid-template-columns: 1fr 1fr;
+}
+
+.tc-divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 16px 0;
+}
+
+.tc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tc-input-group label {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.tc-input-group input[type=number] {
+  background: #0a0a0a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  -moz-appearance: textfield;
+}
+.tc-input-group input[type=number]:focus {
+  border-color: #ecb063;
+}
+.tc-input-group input[type=number]::-webkit-inner-spin-button,
+.tc-input-group input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.tc-input-group input[type=number]::placeholder {
+  color: #555;
+}
+.tc-input-group input[type=number].tc-input--muted {
+  color: #555;
+}
+.tc-input-group input[type=number].tc-input--invalid {
+  color: #d44;
+}
+.tc-input-group.tc-readonly .tc-value {
+  font-size: 1.2rem;
+  color: #ecb063;
+  padding: 10px 0;
+}
+
+.tc-result-card {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tc-result-card .tc-label {
+  font-size: 0.72rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.tc-result-card .tc-value {
+  font-size: 1.05rem;
+  color: #e0e0e0;
+}
+.tc-result-card.tc-highlight {
+  border-color: #ecb063;
+}
+.tc-result-card.tc-highlight .tc-value {
+  color: #ecb063;
+  font-size: 1.15rem;
+}
+
+.tc-sweet-spot {
+  grid-column: 1/-1;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  padding: 18px 20px;
+}
+.tc-sweet-spot h3 {
+  font-size: 0.85rem;
+  color: #ecb063;
+  margin: 0 0 12px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.tc-sweet-spot p {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+.tc-sweet-spot .tc-sweet-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+  font-size: 0.85rem;
+}
+.tc-sweet-spot .tc-sweet-item:last-child {
+  border-bottom: none;
+}
+.tc-sweet-spot .tc-sweet-item strong {
+  color: #ecb063;
+}
+
+.tc-mini-chart-container {
+  grid-column: 1/-1;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  padding: 20px;
+  height: 320px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .tc-calc-layout {
+    grid-template-columns: 1fr;
+  }
+  .tc-results-panel {
+    border-left: none;
+    padding-left: 0;
+  }
+  .tc-results-group {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tc-chart-container {
+    height: 280px;
+  }
+  .tc-section h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/*# sourceMappingURL=tax-calculator.css.map */

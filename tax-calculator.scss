@@ -1,0 +1,275 @@
+// ──────────────────────────────────────
+//  PFA Tax Calculator — Styles
+//  Matches portfolio colour scheme
+// ──────────────────────────────────────
+
+$bg-color-primary: #050505;
+$bg-color-2: #0a0a0a;
+$font-color-1: #e0e0e0;
+$font-color-link: #ecb063;
+$border-color-1: #3e3e3e;
+
+@font-face {
+  font-family: "SF-Pro-Display";
+  src: url("fonts/SF-Mono-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'SF-Pro-Display', monospace, sans-serif;
+  background-color: $bg-color-primary;
+  color: $font-color-1;
+  min-height: 100vh;
+}
+
+// ── Wrapper ──────────────────────────
+.tc-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+// ── Section headings ─────────────────
+.tc-section {
+  margin-bottom: 64px;
+
+  h2 {
+    font-size: 1.6rem;
+    color: $font-color-link;
+    margin: 0 0 4px;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+  }
+
+  .tc-subtitle {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0 0 28px;
+  }
+}
+
+// ── Overview chart ───────────────────
+.tc-chart-container {
+  background: $bg-color-2;
+  border: 1px solid #333;
+  padding: 20px;
+  height: 420px;
+  position: relative;
+}
+
+// ── Calculator layout ────────────────
+.tc-calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+// ── Panel headings ───────────────────
+.tc-panel-heading {
+  font-size: 0.75rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 18px;
+  font-weight: normal;
+}
+
+// ── Inputs panel ─────────────────────
+.tc-inputs-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// ── Results panel ────────────────────
+.tc-results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 1px solid #222;
+  padding-left: 24px;
+}
+
+.tc-results-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+
+  &.tc-results-group--inline {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tc-divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 16px 0;
+}
+
+.tc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 0.8rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  input[type="number"] {
+    background: $bg-color-2;
+    border: 1px solid #444;
+    color: $font-color-1;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $font-color-link;
+    }
+
+    // hide spinners
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    -moz-appearance: textfield;
+
+    &::placeholder {
+      color: #555;
+    }
+
+    &.tc-input--muted {
+      color: #555;
+    }
+
+    &.tc-input--invalid {
+      color: #d44;
+    }
+  }
+
+  &.tc-readonly {
+    .tc-value {
+      font-size: 1.2rem;
+      color: $font-color-link;
+      padding: 10px 0;
+    }
+  }
+}
+
+// ── Results cards ────────────────────
+.tc-result-card {
+  background: $bg-color-2;
+  border: 1px solid #333;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .tc-label {
+    font-size: 0.72rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .tc-value {
+    font-size: 1.05rem;
+    color: $font-color-1;
+  }
+
+  &.tc-highlight {
+    border-color: $font-color-link;
+
+    .tc-value {
+      color: $font-color-link;
+      font-size: 1.15rem;
+    }
+  }
+}
+
+// ── Sweet spot ───────────────────────
+.tc-sweet-spot {
+  grid-column: 1 / -1;
+  background: $bg-color-2;
+  border: 1px solid #333;
+  padding: 18px 20px;
+
+  h3 {
+    font-size: 0.85rem;
+    color: $font-color-link;
+    margin: 0 0 12px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0;
+  }
+
+  .tc-sweet-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #222;
+    font-size: 0.85rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    strong {
+      color: $font-color-link;
+    }
+  }
+}
+
+// ── Mini chart ───────────────────────
+.tc-mini-chart-container {
+  grid-column: 1 / -1;
+  background: $bg-color-2;
+  border: 1px solid #333;
+  padding: 20px;
+  height: 320px;
+  position: relative;
+}
+
+// ── Responsive ───────────────────────
+@media (max-width: 768px) {
+  .tc-calc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tc-results-group {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tc-chart-container {
+    height: 280px;
+  }
+
+  .tc-section h2 {
+    font-size: 1.3rem;
+  }
+}
