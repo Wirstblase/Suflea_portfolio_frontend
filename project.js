@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //todo: add better text-image embedding, randomize float direction
 
-    const urlstring = "https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
+    const urlstring = (window.APP_CONFIG && window.APP_CONFIG.apiBaseUrl !== undefined) ? window.APP_CONFIG.apiBaseUrl : "https://portfoliobackend.mariussuflea.com"
 
     const urlParams = new URLSearchParams(window.location.search);
     const projectType = urlParams.get('type');

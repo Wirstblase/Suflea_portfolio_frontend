@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //todo: add section separator for years
 
-    const urlstring = "https://portfoliobackend.mariussuflea.com" // for local testing: http://127.0.0.1:5000
+    const urlstring = (window.APP_CONFIG && window.APP_CONFIG.apiBaseUrl !== undefined) ? window.APP_CONFIG.apiBaseUrl : "https://portfoliobackend.mariussuflea.com"
 
     const scrollPosition = window.location.hash.substring(1);
     if (scrollPosition) {
