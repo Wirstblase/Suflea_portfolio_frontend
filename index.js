@@ -58,6 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    const showNoProjectsMessage = () => {
+        projectsGrid.innerHTML = '<div class="no-projects-message"><p>Currently, there are no projects available to show</p></div>';
+        sortButton.style.display = 'none';
+    };
+
     // Fetch project types
     fetch(`${urlstring}/get_project_types?whatever=whatever`)
         .then(response => response.json())
@@ -80,6 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Initial fetch after checkboxes are populated
             fetchAndDisplayProjects();
+        })
+        .catch(error => {
+            console.error('Error fetching project types:', error);
+            fetchAndDisplayProjects();
         });
 
     // Fetch and display projects
@@ -90,8 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .join(',');
 
         if (!selectedTypes) {
-            projectsGrid.innerHTML = '<div class="no-projects-message"><p>Currently, there are no projects available to show</p></div>';
-            //projectsGrid.style.gridTemplateColumns = '1fr';
+            showNoProjectsMessage();
             return;
         }
 
@@ -127,6 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(projects => {
                 console.log('Projects:', projects);
                 projectsGrid.innerHTML = '';
+                if (!projects || projects.length === 0) {
+                    showNoProjectsMessage();
+                    return;
+                }
+                sortButton.style.display = '';
                 projects.forEach(project => {
                     const [type, title, date] = project.split('⌭');
                     console.log('Project Details:', { type, title, date });
@@ -169,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Error fetching projects:', error);
+                showNoProjectsMessage();
             });
     };
 
