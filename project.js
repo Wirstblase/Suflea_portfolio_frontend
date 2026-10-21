@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         //keep only the pics that start with low-res_
         filteredPics = filteredPics.filter(pic => pic.startsWith('low-res_'));
 
-        //sort pics alphabetically
-        filteredPics.sort();
+        //sort pics in natural order (pic1 < pic2 < pic10)
+        filteredPics.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
         console.log('all files:', pics);
         console.log('Filtered Pics:', filteredPics);
