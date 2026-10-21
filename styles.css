@@ -140,6 +140,14 @@ header {
   z-index: 1;
 }
 
+.browse-all-projects {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  background-color: #050505;
+}
+
 #filters {
   padding: 20px;
   background-color: #050505;
@@ -229,6 +237,12 @@ header {
 }
 #projects-grid .project p {
   color: #b0b0b0;
+}
+#projects-grid .more-projects-label {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #b0b0b0;
+  margin-top: 20px;
 }
 
 @media (min-width: 100px) {

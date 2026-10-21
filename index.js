@@ -179,6 +179,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     projectsGrid.appendChild(projectElement);
                 });
+
+                const allTypeCheckboxes = document.querySelectorAll('input[name="project-type"]');
+                const allTypesChecked = allTypeCheckboxes.length > 0 && document.querySelectorAll('input[name="project-type"]:checked').length === allTypeCheckboxes.length;
+                if (allTypesChecked) {
+                    const moreLabel = document.createElement('p');
+                    moreLabel.className = 'more-projects-label';
+                    moreLabel.textContent = 'and many more to be added...';
+                    projectsGrid.appendChild(moreLabel);
+                }
             })
             .catch(error => {
                 console.error('Error fetching projects:', error);
