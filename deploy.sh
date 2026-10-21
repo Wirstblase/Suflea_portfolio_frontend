@@ -9,9 +9,9 @@ cd "$(dirname "$0")"
 PI_HOST="${PI_HOST:-raspberrypi}"
 REMOTE_DIR="/var/www/landingpage"
 
-echo "==> ensuring config.js points at same origin ('' = relative URLs)"
+echo "==> writing prod apiBaseUrl (local config.js is restored after deploy)"
 ORIGINAL_CONFIG="$(cat config.js)"
-echo "window.APP_CONFIG = { apiBaseUrl: '' };" > config.js
+printf 'window.APP_CONFIG = { apiBaseUrl: "https://portfoliobackend.mariussuflea.com" };\n' > config.js
 trap 'printf "%s\n" "$ORIGINAL_CONFIG" > config.js' EXIT
 
 echo "==> syncing to ${PI_HOST}:${REMOTE_DIR}"
